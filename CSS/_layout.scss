@@ -1,13 +1,12 @@
-
-body{
+body {
     @extend %bodyBasic;
     font-size: 15px;
     font-weight: 300;
 }
 
 //Header
-.header{
-    @include flexbox(space-between,row);
+.header {
+    @include flexbox(space-between, row);
     @extend %borderSizing;
     width: $valorFull;
     padding: 20px 50px;
@@ -15,11 +14,11 @@ body{
 }
 
 //Banner
-.banner{
+.banner {
     width: $valorFull;
-    padding: 90px  0;
+    padding: 90px 0;
     @extend %center;
-    background-image:url(https://www.pxfuel.com/es/desktop-wallpaper-gtbvh);
+    background-image: url(https://e1.pxfuel.com/desktop-wallpaper/999/691/desktop-wallpaper-6-2560×1440-for-youtube-music-banner.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     color: $white;
@@ -27,19 +26,19 @@ body{
 
 
 //Sección central de productos
-.products{
+.products {
     width: 80%;
     @include centering;
     padding: 20px;
     @extend %borderSizing;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 70px;
 }
 
 //Menu lateral
-.menu{
-    @include flexbox(flex-start,column);
+.menu {
+    @include flexbox(flex-start, column);
     width: 500Px;
     background-color: $white;
     padding: 25px;
@@ -47,15 +46,15 @@ body{
     @extend %borderSizing;
     position: fixed;
     left: -145%;
-    top:5px;
-    box-shadow: -19px -1px 22px -15px rgba(0,0,0,0.30);
+    top: 5px;
+    box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.30);
     border-radius: 10px;
     gap: 20px;
 }
 
 //Carrito de compras
-.cart{
-    @include flexbox(flex-start,column);
+.cart {
+    @include flexbox(flex-start, column);
     width: 500Px;
     background-color: $white;
     padding: 25px;
@@ -63,8 +62,8 @@ body{
     @extend %borderSizing;
     position: fixed;
     right: -145%;
-    top:5px;
-    box-shadow: -19px -1px 22px -15px rgba(0,0,0,0.30);
+    top: 5px;
+    box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.30);
     border-radius: 10px;
 }
 
@@ -75,56 +74,59 @@ Se hace uso de la responsividad con media queries
 */
 
 @media (max-width: 820px) {
-    body{
+    body {
         width: 97%;
     }
 
-    .header{
+    .header {
         padding: 25px;
     }
-    .products{
-        grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
     }
-    
-    .menu{
+
+    .menu {
         width: 465px;
     }
-    
-    .cart{
+
+    .cart {
         width: 465px;
         box-shadow: none;
     }
 }
 
 
-@media (max-width: 480px){
-    .banner{
+@media (max-width: 480px) {
+    .banner {
         padding: 60px 0;
 
     }
-    
-    .products{
+
+    .products {
         grid-template-columns: 1fr;
         padding: 10px;
 
     }
-    .menu{
+
+    .menu {
         width: 465px;
     }
-    
-    .cart{
+
+    .cart {
         width: 465px;
         box-shadow: none;
     }
-    
+
 }
 
-@media (max-width: 360px){
-    .cart{
+@media (max-width: 360px) {
+    .cart {
         width: 365px;
     }
-    .menu{
+
+    .menu {
         width: 365px;
     }
 }
@@ -132,21 +134,24 @@ Se hace uso de la responsividad con media queries
 
 //Dark mode
 @media (prefers-color-scheme: dark) {
+
     /* estilos de modo oscuro aquí */
     body {
-      background-color: #333;
-      color: #fff;
+        background-color: #333;
+        color: #fff;
     }
-    .menu{
+
+    .menu {
         background-color: #777777;
         color: #fff;
         border-color: #ffffff;
         box-sizing: border-box;
     }
-    .cart{
+
+    .cart {
         background-color: #777777;
         color: #fff;
         border-color: #ffffff;
         box-sizing: border-box;
     }
-  }
+}
