@@ -28,7 +28,7 @@ body {
   align-items: center;
   width: 100%;
   padding: 20px 50px;
-  background-color: #333;
+  background-color: #b6b6b6;
 }
 
 .banner {
@@ -36,6 +36,7 @@ body {
   padding: 90px 0;
   background-image: url(https://e1.pxfuel.com/desktop-wallpaper/999/691/desktop-wallpaper-6-2560×1440-for-youtube-music-banner.jpg);
   background-repeat: no-repeat;
+  background-position: bottom center;
   background-size: cover;
   color: #fff;
 }
@@ -129,10 +130,12 @@ Se hace uso de la responsividad con media queries
   }
 }
 @media (prefers-color-scheme: dark) {
-  /* estilos de modo oscuro aquí */
   body {
     background-color: #333;
     color: #fff;
+  }
+  .header {
+    background-color: #333;
   }
   .menu {
     background-color: #777777;
@@ -153,6 +156,11 @@ Se hace uso de la responsividad con media queries
   cursor: pointer;
   display: inline-block;
   border-radius: 20%;
+  transition: all 0.25s ease;
+}
+.header .header__icon:hover {
+  scale: 1.2;
+  transition: all 0.25s ease;
 }
 .header .header__icon--carCounter {
   display: flex;
@@ -192,14 +200,20 @@ Se hace uso de la responsividad con media queries
   justify-content: none;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
   text-align: center;
-  transition: all 0.25s ease-in-out;
+  padding: 5px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+.products .products__item:hover {
+  transition: all 0.25s ease;
+  background-color: #d8d8d8;
 }
 .products .products__img {
   width: 200px;
   height: 430px;
   margin-bottom: 15px;
+  border-radius: 10px;
 }
 .products .products__title {
   font-weight: 500;
@@ -225,11 +239,15 @@ Se hace uso de la responsividad con media queries
   background-color: rgb(255, 255, 255);
   color: #000;
   font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 .products .products__btn:hover {
   background-color: #fff;
   color: rgb(255, 197, 91);
   border-color: rgb(255, 255, 0);
+  scale: 1.05;
+  transition: 0.25s all ease;
 }
 
 .menu.show {
@@ -281,7 +299,7 @@ Se hace uso de la responsividad con media queries
   padding: 25px 0;
 }
 .cart .cart__items {
-  overflow-y: auto; /* habilitar scrolling vertical */
+  overflow-y: auto;
 }
 .cart .cart__item {
   display: flex;
@@ -389,7 +407,8 @@ Se hace uso de la responsividad con media queries
   .cart .cart__img {
     width: 100px;
   }
-  .cart .cart__product, .cart .cart__price {
+  .cart .cart__product,
+  .cart .cart__price {
     align-items: center;
     margin: 0 auto;
   }
@@ -409,18 +428,57 @@ Se hace uso de la responsividad con media queries
   }
 }
 @media (prefers-color-scheme: dark) {
-  /* estilos de modo oscuro aquí */
-  .products__btn {
+  body {
+    background-color: #333;
+    color: #fff;
+  }
+  .header {
+    background-color: #333;
+  }
+  .menu {
+    background-color: #777777;
+    color: #fff;
+    border-color: #ffffff;
+    box-sizing: border-box;
+  }
+  .menu .menu__option {
+    border-color: #555;
+  }
+  .cart {
+    background-color: #777777;
+    color: #fff;
+    border-color: #ffffff;
+    box-sizing: border-box;
+  }
+  .cart .cart__title {
+    color: #fff;
+  }
+  .cart .cart__item {
+    border-bottom: 1px solid #555;
+  }
+  .cart .cart__buy {
+    background-color: rgb(24, 194, 137);
+  }
+  .cart .cart__buy:hover {
+    background-color: #fff;
+    color: rgb(24, 194, 137);
+    border-color: rgb(24, 194, 137);
+  }
+  .products__item:hover {
+    background-color: #505050 !important;
+    transition: all 0.25s ease;
+  }
+  .products__item .products__btn {
     border-radius: 10px;
     padding: 5px 15px;
     border-color: transparent;
-    background-color: rgb(109, 109, 109) !important;
-    color: #fff !important;
+    background-color: rgb(109, 109, 109);
+    color: #fff;
     font-weight: bold;
   }
-  .products__btn:hover {
+  .products__item .products__btn:hover {
     background-color: #fff;
-    color: rgb(0, 0, 0) !important;
-    border-color: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0);
+    border-color: rgb(255, 255, 255);
   }
 }/*# sourceMappingURL=main.css.map */

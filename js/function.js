@@ -1,5 +1,3 @@
-
-
 //------------Metodo remover elementos del carrito
 //---------Espacio para colocar todas las constantes
 const iconeRemove = document.querySelectorAll(".remove");//Icono del bote de basura
@@ -25,15 +23,15 @@ const iconeCloseMenu = document.querySelector(".menu__close");//cruz del menu
 //Función
 iconeCart.addEventListener("click", () => {
   //añadimos un if para que no entre en conflicto con la clase close
-  if (car.classList.contains("close")){
+  if (car.classList.contains("close")) {
     car.classList.add("show");
     car.classList.remove("close")
-  
-  } else{
+
+  } else {
     car.classList.toggle("show");
   }
   //Añadimos funcion para cerrar el menu si esta abierto
-  if (car.classList.contains("show")){
+  if (car.classList.contains("show")) {
     menu.classList.add("close");
   }
 });
@@ -42,7 +40,7 @@ iconeCart.addEventListener("click", () => {
 console.log(iconeCloseCart);
 //se muestra el elementi html correctamente
 //le añadimos el evento
-iconeCloseCart.addEventListener("click", () =>{
+iconeCloseCart.addEventListener("click", () => {
   car.classList.toggle("close");
 });
 
@@ -50,14 +48,14 @@ iconeCloseCart.addEventListener("click", () =>{
 //Seleccionamos el article del menu
 //Añadimos el evento para mostrar el menu lateral
 iconeMenu.addEventListener("click", () => {
-   //añadimos un if para que no entre en conflicto con la clase close
-   if (menu.classList.contains("close")){
+  //añadimos un if para que no entre en conflicto con la clase close
+  if (menu.classList.contains("close")) {
     menu.classList.add("show");
     menu.classList.remove("close")
-  } else{
+  } else {
     menu.classList.toggle("show");
   }
-  if (menu.classList.contains("show")){
+  if (menu.classList.contains("show")) {
     car.classList.add("close");
   }
 });
@@ -65,7 +63,7 @@ iconeMenu.addEventListener("click", () => {
 
 console.log(iconeCloseMenu)
 //Todo bien hasta ahora
-iconeCloseMenu.addEventListener("click", ()=>{
+iconeCloseMenu.addEventListener("click", () => {
   menu.classList.toggle("close");
 });
 
@@ -75,6 +73,12 @@ const carContainer = document.querySelector(".cart__items");
 
 // Creamos un arreglo para almacenar los productos del carrito
 let carArray = [];
+
+// Función para actualizar el contador de ítems en el carrito
+const updateCartCounter = () => {
+  const totalQuantity = carArray.reduce((acc, current) => acc + current.quantity, 0);
+  document.querySelector(".header__icon--carCounter").innerText = totalQuantity;
+};
 
 // Función para agregar productos al carrito
 const addProductCart = (product) => {
@@ -91,13 +95,13 @@ const addProductCart = (product) => {
 
   // Llamamos una función que actualiza el carrito
   updateCartContainer();
+  updateCartCounter(); // Actualizamos el contador de ítems
 };
 
 // Función que actualiza el contenedor del carrito
 const updateCartContainer = () => {
   // Limpiamos el contenido del contenedor del carrito
   carContainer.innerHTML = "";
-
 
   // Agregamos los productos del carrito
   carArray.forEach((product, index) => {
@@ -133,21 +137,23 @@ const updateCartContainer = () => {
 
     // Agregamos un evento de clic al botón de eliminar
     iconeRemove.addEventListener("click", () => {
-      // Elimina el producto del arreglo
-      carArray.splice(index, 1);
+      // Decrementamos la cantidad del producto
+      if (product.quantity > 1) {
+        product.quantity--;
+      } else {
+        // Si la cantidad es 1, eliminamos el producto del arreglo
+        carArray.splice(index, 1);
+      }
 
       // Actualiza el carrito
       updateCartContainer();
+      updateCartCounter(); // Actualizamos el contador de ítems
     });
   });
-
- 
-
 };
 
 // Seleccionamos los botones de agregar al carrito
 const addCartButtons = document.querySelectorAll(".products__btn");
-
 
 // Agregamos un evento de clic a los botones de "Añadir al carrito"
 addCartButtons.forEach((button) => {
@@ -162,6 +168,26 @@ addCartButtons.forEach((button) => {
   });
 });
 
+// Asegurarse que los elementos del DOM se carguen
+document.addEventListener('DOMContentLoaded', () => {
+  // Selecciona todos los botones de eliminar
+  const deleteButtons = document.querySelectorAll('.cart__delete');
+
+  // Agrega un evento de clic a cada botón de eliminar
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Selecciona el elemento del carrito que contiene el botón de eliminar
+      const cartItem = button.closest('.cart__item');
+
+      // Elimina el elemento del carrito
+      cartItem.remove();
+
+      // Actualiza el carrito
+      updateCartContainer();
+      updateCartCounter(); // Actualizamos el contador de ítems
+    });
+  });
+});
 
 //-----Eliminar del carrito despues de añadir
 // Selecciona todos los botones de eliminar
@@ -172,7 +198,7 @@ deleteButtons.forEach(button => {
   button.addEventListener('click', () => {
     // Selecciona el elemento del carrito que contiene el botón de eliminar
     const cartItem = button.closest('.cart__item');
-    
+
     // Elimina el elemento del carrito
     cartItem.remove();
 
@@ -192,16 +218,20 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
       // Selecciona el elemento del carrito que contiene el botón de eliminar
       const cartItem = button.closest('.cart__item');
-      
+
       // Elimina el elemento del carrito
       cartItem.remove();
+
+      // Actualiza el carrito
+      updateCartContainer();
+      updateCartCounter(); // Actualizamos el contador de ítems
     });
   });
 });
 
 //------Contador de objetos en el carrito
 //Seleccionamos el botón agregar al carrito
-    //const addCartButtons = document.querySelectorAll(".products__btn");
+//const addCartButtons = document.querySelectorAll(".products__btn");
 //agregamos una funcion
 // Iteramos sobre la lista de botones y agregamos un listener de eventos a cada uno
 addCartButtons.forEach(button => {
@@ -215,4 +245,3 @@ addCartButtons.forEach(button => {
 
 
 
-  

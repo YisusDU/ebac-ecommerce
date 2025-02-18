@@ -10,7 +10,7 @@ body {
     @extend %borderSizing;
     width: $valorFull;
     padding: 20px 50px;
-    background-color: $gray;
+    background-color: #b6b6b6;
 }
 
 //Banner
@@ -20,10 +20,10 @@ body {
     @extend %center;
     background-image: url(https://e1.pxfuel.com/desktop-wallpaper/999/691/desktop-wallpaper-6-2560×1440-for-youtube-music-banner.jpg);
     background-repeat: no-repeat;
+    background-position: bottom center;
     background-size: cover;
     color: $white;
 }
-
 
 //Sección central de productos
 .products {
@@ -67,8 +67,6 @@ body {
     border-radius: 10px;
 }
 
-
-
 /*
 Se hace uso de la responsividad con media queries
 */
@@ -84,7 +82,6 @@ Se hace uso de la responsividad con media queries
 
     .products {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
     }
 
     .menu {
@@ -97,17 +94,14 @@ Se hace uso de la responsividad con media queries
     }
 }
 
-
 @media (max-width: 480px) {
     .banner {
         padding: 60px 0;
-
     }
 
     .products {
         grid-template-columns: 1fr;
         padding: 10px;
-
     }
 
     .menu {
@@ -118,7 +112,6 @@ Se hace uso de la responsividad con media queries
         width: 465px;
         box-shadow: none;
     }
-
 }
 
 @media (max-width: 360px) {
@@ -131,14 +124,15 @@ Se hace uso de la responsividad con media queries
     }
 }
 
-
 //Dark mode
 @media (prefers-color-scheme: dark) {
-
-    /* estilos de modo oscuro aquí */
     body {
         background-color: #333;
         color: #fff;
+    }
+
+    .header {
+        background-color: $gray;
     }
 
     .menu {
