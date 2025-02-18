@@ -46,7 +46,7 @@ iconeCloseCart.addEventListener("click", () =>{
   car.classList.toggle("close");
 });
 
-//--------------Métodos para mostrar y ocultar el menu izquierdo emparejada con el
+//--------------Métodos para mostrar y ocultar el menu izquierdo 
 //Seleccionamos el article del menu
 //Añadimos el evento para mostrar el menu lateral
 iconeMenu.addEventListener("click", () => {
