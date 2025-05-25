@@ -1,3 +1,5 @@
+
+
 //------------Metodo remover elementos del carrito
 //---------Espacio para colocar todas las constantes
 const iconeRemove = document.querySelectorAll(".remove");//Icono del bote de basura
@@ -44,7 +46,7 @@ iconeCloseCart.addEventListener("click", () => {
   car.classList.toggle("close");
 });
 
-//--------------Métodos para mostrar y ocultar el menu izquierdo 
+//--------------Métodos para mostrar y ocultar el menu izquierdo emparejada con el
 //Seleccionamos el article del menu
 //Añadimos el evento para mostrar el menu lateral
 iconeMenu.addEventListener("click", () => {
@@ -74,12 +76,6 @@ const carContainer = document.querySelector(".cart__items");
 // Creamos un arreglo para almacenar los productos del carrito
 let carArray = [];
 
-// Función para actualizar el contador de ítems en el carrito
-const updateCartCounter = () => {
-  const totalQuantity = carArray.reduce((acc, current) => acc + current.quantity, 0);
-  document.querySelector(".header__icon--carCounter").innerText = totalQuantity;
-};
-
 // Función para agregar productos al carrito
 const addProductCart = (product) => {
   // Verificamos si el producto ya existe en el carrito
@@ -87,7 +83,7 @@ const addProductCart = (product) => {
 
   // Si el producto existe, incrementamos su cantidad
   if (existingProduct) {
-    existingProduct.quantity++;
+    alert("El producto ya existe en el carrito");
   } else {
     // Si no existe, lo agregamos al array
     carArray.push({ ...product, quantity: 1 });
@@ -95,13 +91,14 @@ const addProductCart = (product) => {
 
   // Llamamos una función que actualiza el carrito
   updateCartContainer();
-  updateCartCounter(); // Actualizamos el contador de ítems
 };
 
 // Función que actualiza el contenedor del carrito
 const updateCartContainer = () => {
   // Limpiamos el contenido del contenedor del carrito
   carContainer.innerHTML = "";
+  updateCartCounter();
+
 
   // Agregamos los productos del carrito
   carArray.forEach((product, index) => {
@@ -120,7 +117,7 @@ const updateCartContainer = () => {
 
     const cartPrice = document.createElement("p");
     cartPrice.classList.add("cart__price");
-    cartPrice.textContent = `$${product.price} x ${product.quantity}`;
+    cartPrice.textContent = `$${product.price}`;
     cartItem.appendChild(cartPrice);
 
     const iconeRemove = document.createElement("i");
@@ -137,23 +134,23 @@ const updateCartContainer = () => {
 
     // Agregamos un evento de clic al botón de eliminar
     iconeRemove.addEventListener("click", () => {
-      // Decrementamos la cantidad del producto
-      if (product.quantity > 1) {
-        product.quantity--;
-      } else {
-        // Si la cantidad es 1, eliminamos el producto del arreglo
+      setTimeout(() => {
+        // Elimina el producto del arreglo
+        updateCartCounter();
         carArray.splice(index, 1);
-      }
-
-      // Actualiza el carrito
-      updateCartContainer();
-      updateCartCounter(); // Actualizamos el contador de ítems
+        // Actualiza el carrito
+        updateCartContainer();
+      }, 300);
     });
   });
+
+
+
 };
 
 // Seleccionamos los botones de agregar al carrito
 const addCartButtons = document.querySelectorAll(".products__btn");
+
 
 // Agregamos un evento de clic a los botones de "Añadir al carrito"
 addCartButtons.forEach((button) => {
@@ -163,85 +160,31 @@ addCartButtons.forEach((button) => {
       image: e.target.parentNode.querySelector(".products__img").src,
       price: e.target.parentNode.querySelector(".products__price").textContent.replace("$", ""),
     };
-
+    updateCartCounter();
     addProductCart(product);
   });
 });
 
-// Asegurarse que los elementos del DOM se carguen
-document.addEventListener('DOMContentLoaded', () => {
-  // Selecciona todos los botones de eliminar
-  const deleteButtons = document.querySelectorAll('.cart__delete');
-
-  // Agrega un evento de clic a cada botón de eliminar
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Selecciona el elemento del carrito que contiene el botón de eliminar
-      const cartItem = button.closest('.cart__item');
-
-      // Elimina el elemento del carrito
-      cartItem.remove();
-
-      // Actualiza el carrito
-      updateCartContainer();
-      updateCartCounter(); // Actualizamos el contador de ítems
-    });
-  });
-});
-
-//-----Eliminar del carrito despues de añadir
-// Selecciona todos los botones de eliminar
-const deleteButtons = document.querySelectorAll('.cart__delete');
-
-// Agrega un evento de clic a cada botón de eliminar
-deleteButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Selecciona el elemento del carrito que contiene el botón de eliminar
-    const cartItem = button.closest('.cart__item');
-
-    // Elimina el elemento del carrito
-    cartItem.remove();
-
-    // Actualiza el carrito
-    updateCartContainer();
-  });
-});
-
-//Asegurarse que los elementos del DOM se carguen
-// Agrega un evento de carga de la página
-document.addEventListener('DOMContentLoaded', () => {
-  // Selecciona todos los botones de eliminar
-  const deleteButtons = document.querySelectorAll('.cart__delete');
-
-  // Agrega un evento de clic a cada botón de eliminar
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Selecciona el elemento del carrito que contiene el botón de eliminar
-      const cartItem = button.closest('.cart__item');
-
-      // Elimina el elemento del carrito
-      cartItem.remove();
-
-      // Actualiza el carrito
-      updateCartContainer();
-      updateCartCounter(); // Actualizamos el contador de ítems
-    });
-  });
-});
 
 //------Contador de objetos en el carrito
 //Seleccionamos el botón agregar al carrito
 //const addCartButtons = document.querySelectorAll(".products__btn");
 //agregamos una funcion
 // Iteramos sobre la lista de botones y agregamos un listener de eventos a cada uno
-addCartButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    //El metodo reduce, funciona con un acumulador: acc y un objeto actual: current, al final se establece el 0, que es donde empieza
-    //el contador
-    const totalQuantity = carArray.reduce((acc, current) => acc + current.quantity, 0);
-    document.querySelector(".header__icon--carCounter").innerText = totalQuantity;
-  });
-});
+// addCartButtons.forEach(button => {
+//   button.addEventListener("click", () => {
+//     //El metodo reduce, funciona con un acumulador: acc y un objeto actual: current, al final se establece el 0, que es donde empieza
+//     //el contador
+//   /*   const totalQuantity = carArray.reduce((acc, current) => acc + current.quantity, 0);
+//     document.querySelector(".header__icon--carCounter").innerText = totalQuantity; */
 
 
+//   });
+// });
 
+
+//Funcion para actualizar el contador de productos en el carrito
+
+const updateCartCounter = () => {
+  document.querySelector(".header__icon--carCounter").innerText = carArray.length;
+}

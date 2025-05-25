@@ -1,96 +1,157 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="CSS/styles-Sass.css" />
     <script src="js/function.js" defer></script>
     <title>Shop E-ntelligent</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header">
-            <i><img  class="header__icon iconeMenu"  src="img/menu.svg" alt="icone-menu"></i>
-            <img class="header__icon--loge" src="img/better-loge.PNG" alt="Logo E-ntelligent">
-            <i>
-                <img class="header__icon iconeCart"  src=" img/shopping-cart.svg" alt="Icone-cart">
-                <div class="header__icon--carCounter">0</div>
-            </i>
+      <i
+        ><img
+          class="header__icon iconeMenu"
+          src="img/menu.svg"
+          alt="icone-menu"
+      /></i>
+      <img
+        class="header__icon--loge"
+        src="img/better-loge.PNG"
+        alt="Logo E-ntelligent"
+      />
+      <i>
+        <div class="header__icon--carCounter">0</div>
+        <img
+          class="header__icon iconeCart"
+          src=" img/shopping-cart.svg"
+          alt="Icone-cart"
+        />
+      </i>
     </header>
     <main>
-        <article class="banner">
-            <h2 class="banner__publicity">Productos nuevos</h2>
-            <p class="banner__description">Conoce nuestros nuevos productos</p>
-        </article>
+      <article class="banner">
+        <h2 class="banner__publicity">Productos nuevos</h2>
+        <p class="banner__description">Conoce nuestros nuevos productos</p>
+      </article>
 
-        <article class="products">
+      <article class="products">
+        <section class="products__item">
+          <img
+            class="products__img"
+            src="img/guitar-clasic.JPG"
+            alt="Guitarra-clasica"
+          />
+          <h3 class="products__title">
+            Paquete de contenido "Aprende a tocar guitarra básica"
+          </h3>
+          <p class="products__price">$100.00 De por vida</p>
+          <button class="products__btn">Añadir al carrito</button>
+        </section>
 
-            <section class="products__item">
-                <img class="products__img" src="img/guitar-clasic.JPG" alt="Guitarra-clasica">
-                <h3 class="products__title">Paquete de contenido "Aprende a tocar guitarra básica"</h3>
-                <p class="products__price">$100.00 De por vida</p>
-                <button class="products__btn">Añadir al carrito</button>
-            </section>
-            
+        <section class="products__item">
+          <img
+            class="products__img"
+            src="img/guitar-blues-clasics.JPG"
+            alt="guitar-blues"
+          />
+          <h3 class="products__title">
+            Paquete de contenido "Aprende las técnicas de guitarra Blues"
+          </h3>
+          <p class="products__price">$100.00 De por vida</p>
+          <button class="products__btn">Añadir al carrito</button>
+        </section>
 
-            <section class="products__item">
-                <img class="products__img" src="img/guitar-blues-clasics.JPG" alt="guitar-blues">
-                <h3 class="products__title">Paquete de contenido "Aprende las técnicas de guitarra Blues"</h3>
-                <p class="products__price">$100.00 De por vida</p>
-                <button class="products__btn">Añadir al carrito</button>
-            </section>
+        <section class="products__item">
+          <img
+            class="products__img"
+            src="img/guitar-country.JPG"
+            alt="guitar-country"
+          />
+          <h3 class="products__title">
+            Paquete de contenido "Aprende las técnicas de guitarra Country"
+          </h3>
+          <p class="products__price">$100.00 De por vida</p>
+          <button class="products__btn">Añadir al carrito</button>
+        </section>
 
-            <section class="products__item">
-                <img class="products__img" src="img/guitar-country.JPG" alt="guitar-country">
-                <h3 class="products__title">Paquete de contenido "Aprende las técnicas de guitarra Country"</h3>
-                <p class="products__price">$100.00 De por vida</p>
-                <button class="products__btn">Añadir al carrito</button>
-            </section>
+        <section class="products__item">
+          <img
+            class="products__img"
+            src="img/guitar-noob.JPG"
+            alt="guitar-intermed"
+          />
+          <h3 class="products__title">
+            Paquete de contenido "Aprende a tocar guitarra intermedia"
+          </h3>
+          <p class="products__price">$100.00 De por vida</p>
+          <button class="products__btn">Añadir al carrito</button>
+        </section>
 
-            <section class="products__item">
-                <img class="products__img" src="img/guitar-noob.JPG" alt="guitar-intermed">
-                <h3 class="products__title">Paquete de contenido "Aprende a tocar guitarra intermedia"</h3>
-                <p class="products__price">$100.00 De por vida</p>
-                <button class="products__btn">Añadir al carrito</button>
-            </section>
+        <section class="products__item">
+          <img
+            class="products__img"
+            src="img/guitar-intermediated.JPG"
+            alt="guitar-country"
+          />
+          <h3 class="products__title">
+            Paquete de contenido "Aprende las técnicas de guitarra Shred"
+          </h3>
+          <p class="products__price">$100.00 De por vida</p>
+          <button class="products__btn">Añadir al carrito</button>
+        </section>
 
-            <section class="products__item">
-                <img class="products__img" src="img/guitar-intermediated.JPG" alt="guitar-country">
-                <h3 class="products__title">Paquete de contenido "Aprende las técnicas de guitarra Shred"</h3>
-                <p class="products__price">$100.00 De por vida</p>
-                <button class="products__btn">Añadir al carrito</button>
-            </section>
+        <section class="products__item">
+          <img
+            class="products__img"
+            src="img/guitar-pro.JPG"
+            alt="guitar-blues"
+          />
+          <h3 class="products__title">
+            Paquete de contenido "Todos los cursos"
+          </h3>
+          <p class="products__price">$300.00 De por vida</p>
+          <button class="products__btn">Añadir al carrito</button>
+        </section>
+      </article>
 
-            <section class="products__item">
-                <img class="products__img" src="img/guitar-pro.JPG" alt="guitar-blues">
-                <h3 class="products__title">Paquete de contenido "Todos los cursos"</h3>
-                <p class="products__price">$300.00 De por vida</p>
-                <button class="products__btn">Añadir al carrito</button>
-            </section>
-
-           
-
-        <article class="menu">
+      <article class="menu">
+        <section class="menu__header">
+          <div class="menu__header--top">
+            <i
+              ><img class="menu__close" src="img/x-square.svg" alt="close"
+            /></i>
+          </div>
+          <div class="menu__header--bottom">
             <h2>Hola de nuevo, <span>User</span>!</h2>
-            <i><img class="menu__close" src="img/x-square.svg" alt="close"></i>
-            <section class="menu__option">Mi cuenta</section>
-            <section class="menu__option">Favoritos</section>
-            <section class="menu__option">Mis compras</section>
+          </div>
+        </section>
+        <section class="menu__option">Mi cuenta</section>
+        <section class="menu__option">Favoritos</section>
+        <section class="menu__option">Mis compras</section>
+      </article>
 
-        </article>
-<!--Sección del carrito-->
-        <article class="cart">
-            <section>
-                <h2 class="cart__title">CARRITO</h2>
-                <i><img class="cart__close" src="img/x-square.svg" alt="close"></i>
-            </section>
-            <div class="cart__items">
-            </div>
-            
-            <button class="cart__buy">Comprar</button>
-        </article>
+      <article class="cart">
+        <section class="cart__header">
+          <div class="cart__header--top">
+            <i>
+              <img class="cart__close" src="img/x-square.svg" alt="close" />
+            </i>
+          </div>
+          <div class="cart__header--bottom">
+            <h2 class="cart__title">CARRITO</h2>
+          </div>
+        </section>
+        <section class="cart__items"></section>
+
+        <button class="cart__buy">Comprar</button>
+      </article>
     </main>
-</body>
+  </body>
 </html>

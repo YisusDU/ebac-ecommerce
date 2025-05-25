@@ -1,0 +1,527 @@
+$valorFull: 100%;
+$centerBox: 0 auto;
+$black: #000;
+$white: #fff;
+$gray: #333;
+$grayLight: #5f5f5e;
+$fontFamily: "Lexend", Arial, Helvetica, sans-serif;
+
+@mixin flexbox($spacing, $direction) {
+    display: flex;
+    justify-content: $spacing;
+    flex-direction: $direction;
+    align-items: center;
+}
+
+@mixin centering {
+    align-items: center;
+    margin: $centerBox;
+}
+
+//Mixins para interacciones
+@mixin active {
+
+    &:active {
+        transform: scale(.9);
+        transition: all .25s ease;
+
+    }
+}
+
+@mixin scalePlus {
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            transform: scale(1.05);
+            transition: all .25s ease;
+
+        }
+    }
+}
+
+@mixin backgroundHover($color: $grayLight) {
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: $color;
+            transition: all .25s ease;
+
+        }
+    }
+}
+
+%center {
+    align-items: center;
+    text-align: center;
+}
+
+
+%bodyBasic {
+    width: $valorFull;
+    color: $black;
+    font-family: $fontFamily;
+    @include centering;
+}
+
+%borderSizing {
+    box-sizing: border-box;
+}
+
+
+body {
+    @extend %bodyBasic;
+    font-size: 15px;
+    font-weight: 300;
+    min-width: 22rem;
+    background-image: url("../img/background__body.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.header {
+    @include flexbox(space-between, row);
+    @extend %borderSizing;
+    width: $valorFull;
+    padding: 20px 50px;
+    background-color: $gray;
+    transition: all .25s ease;
+
+    i {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 3rem;
+        padding: 10px;
+        border-radius: 10px;
+        @include active;
+        @include scalePlus;
+        @include backgroundHover($grayLight);
+
+        img {
+            margin: auto;
+        }
+
+
+
+        .header__icon {
+            width: 50px;
+            vertical-align: top;
+            cursor: pointer;
+            display: inline-block;
+            border-radius: 20%;
+        }
+
+        .header__icon--carCounter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(224, 4, 4);
+            padding-right: 3px;
+            color: #fff;
+            position: relative;
+            left: 20px;
+            cursor: pointer;
+            @include active;
+        }
+    }
+
+
+    .header__icon--loge {
+        width: 150px;
+        border-radius: $valorFull;
+    }
+}
+
+.banner {
+    width: $valorFull;
+    padding: 90px 0;
+    @extend %center;
+    background-image: url("../img/guitar__bannerNew.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    color: $white;
+
+    .banner__publicity {
+        width: $valorFull;
+        font-weight: 600;
+        font-size: 30px;
+    }
+
+    .banner__description {
+        width: 350px;
+        @include centering;
+        font-size: 25px;
+        opacity: 0.7;
+    }
+}
+
+
+.products {
+    width: 80%;
+    @include centering;
+    padding: 20px;
+    @extend %borderSizing;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 70px;
+
+    .products__item {
+        @include flexbox(center, column);
+        text-align: center;
+        transition: all .25s ease-in-out;
+        border: 1px solid transparent;
+        padding: 10px;
+        border-radius: 10px;
+        color: $white;
+        background-color: rgb(168 166 166 / 46%);
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                border: 1px solid $gray;
+                box-shadow: 10px 10px 10px 0px rgb(0 0 0 / 28%);
+                background-color: #91919198;
+            }
+        }
+
+
+        .products__img {
+            width: clamp(170px, 200px, 250px);
+            height: clamp(400px, 430px, 450px);
+            margin-bottom: 15px;
+        }
+
+        .products__title {
+            font-weight: 500;
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            .products__price {
+                font-weight: 300;
+                font-size: 15px;
+            }
+
+            //Añadimos la el selector .red para el ejemplo de Modificar clases
+            &.red {
+                color: #e60101;
+                font-weight: bold;
+            }
+
+            //selector de ejemplo para reemplazar clases
+            &.blue {
+                color: blue;
+                font-weight: bold;
+            }
+        }
+
+        .products__btn {
+            border-radius: 10px;
+            padding: 5px 15px;
+            border-color: transparent;
+            background-color: rgb(255, 255, 0);
+            font-weight: bold;
+            cursor: pointer;
+            @include active;
+
+
+            @media (hover: hover) and (pointer: fine) {
+
+                &:hover {
+                    background-color: #fff;
+                    color: rgb(255, 197, 91);
+                    border-color: rgb(255, 255, 0);
+                }
+            }
+        }
+
+
+    }
+
+}
+
+//Menu lateral
+.menu {
+    @include flexbox(flex-start, column);
+    width: 50%;
+    background-color: $grayLight;
+    padding: 25px;
+    height: $valorFull;
+    @extend %borderSizing;
+    position: fixed;
+    left: -100%;
+    top: 5px;
+    box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.30);
+    border-radius: 10px;
+    gap: 20px;
+    color: $white;
+
+    &.show {
+        left: 0;
+        transition: all .25s ease;
+    }
+
+    &.close {
+        left: -100%;
+        transition: all .25s ease;
+    }
+
+    .menu__header {
+        width: 100%;
+
+        .menu__header--top {
+            display: flex;
+            justify-content: end;
+
+            .menu__close {
+                cursor: pointer;
+                @include scalePlus;
+                @include active;
+            }
+        }
+    }
+
+    .menu__option {
+        display: block;
+        width: 90%;
+        height: auto;
+        border: 1px solid #333;
+        border-radius: 20px;
+        padding: 10px;
+        text-align: center;
+        font-size: 30px;
+        cursor: pointer;
+        @include scalePlus;
+        @include active;
+
+    }
+}
+
+//Carrito de compras
+.cart {
+    @include flexbox(flex-start, column);
+    width: 40%;
+    background-color: $grayLight;
+    padding: 25px;
+    height: 99%;
+    @extend %borderSizing;
+    position: fixed;
+    right: -100%;
+    top: 5px;
+    box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.30);
+    border-radius: 10px;
+    color: $white;
+
+    //Clase .show para el ejemplo de evento show
+    &.show {
+        right: 0;
+        //mini animación
+        //una transision es una animación de transicion entre una propiedad y otra, en este caso tiene un retraso de .25segundos
+        transition: all .25s ease;
+    }
+
+    //Clase .show para el ejemplo de evento hide
+    &.close {
+        right: -100%;
+        transition: all .25s ease;
+    }
+
+    .cart__header {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+
+        .cart__header--top {
+            display: block;
+            width: 100%;
+
+            .cart__close {
+                cursor: pointer;
+                @include scalePlus;
+                @include active;
+            }
+        }
+    }
+
+
+    .cart__title {
+        width: 100%;
+        @extend %center;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 25px 0;
+        @extend %borderSizing;
+    }
+
+    .cart__items {
+        overflow-y: auto;
+        /* habilitar scrolling vertical */
+    }
+
+
+    .cart__item {
+        @include flexbox(space-between, column);
+        gap: 10px;
+        border-bottom: 1px solid $gray;
+        @extend %center;
+        padding: 15px;
+        @extend %borderSizing;
+    }
+
+    .cart__img {
+        width: 60px;
+    }
+
+    .cart__product {
+        margin: 5px;
+    }
+
+    .cart__price {
+        font-weight: 500;
+    }
+
+    .cart__delete {
+        width: 25px;
+    }
+
+    .cart__delete img {
+        width: $valorFull;
+        cursor: pointer;
+        @include centering;
+        @include active;
+        @include scalePlus;
+    }
+
+    .cart__buy {
+        margin-top: 10px;
+        width: 60%;
+        border-radius: 10px;
+        padding: 5px 15px;
+        border-color: transparent;
+        background-color: rgb(255, 255, 0);
+        font-weight: bold;
+        @include active;
+
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background-color: #fff;
+                color: rgb(255, 197, 91);
+                border-color: rgb(255, 166, 2);
+            }
+        }
+
+
+        //Ejemplo de toggle para los eventos
+        &.toggle {
+            background-color: rgb(24, 194, 137);
+        }
+    }
+}
+
+
+
+/*
+Se hace uso de la responsividad con media queries
+*/
+
+@media (max-width: 820px) {
+    body {
+        width: $valorFull;
+    }
+
+    .header {
+        padding: 15px;
+
+
+        .header__icon--loge {
+            width: 100px;
+        }
+
+        .header__icon {
+            width: 40px;
+        }
+    }
+
+
+
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+        .products__img {
+            width: clamp(100px, 150px, 180px);
+            height: clamp(350px, 380px, 420px);
+        }
+    }
+
+    .menu {
+        width: 60%;
+    }
+
+    .cart {
+        width: 60%;
+
+    }
+}
+
+
+@media (max-width: 480px) {
+    .banner {
+        padding: 60px 0;
+
+        .banner__publicity {
+            font-size: 24px;
+        }
+
+        .banner__description {
+            font-size: 18px;
+        }
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        padding: 10px;
+
+        .products__img {
+            width: clamp(70px, 120px, 150px);
+            height: clamp(300px, 330px, 370px);
+            margin-bottom: 10px;
+        }
+
+        .products__title,
+        .products__price {
+            padding: 0 10px;
+        }
+    }
+
+    .menu {
+        width: 100%;
+    }
+
+    .cart {
+        width: $valorFull;
+        box-shadow: none;
+
+        .cart__title {
+            padding: 15px;
+        }
+
+        .cart__item {
+            @include flexbox(none, column)
+        }
+
+        .cart__img {
+            width: 100px;
+        }
+
+        .cart__product,
+        .cart__price {
+            @include centering;
+        }
+    }
+
+}
